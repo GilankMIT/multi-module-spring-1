@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper
+        PUBLIC '-//mybatis.org//DTD Config 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="net.gilangprambudi.spring.boilerplate.common.dal.dao.SpringBoilerplateUserDAO">
+
+    <resultMap id="userResultMap" type="net.gilangprambudi.spring.boilerplate.common.dal.dataobject.UserDO">
+        <id property="id" column="id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="email" column="email" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="username" column="username" javaType="java.lang.String" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="userResultMap">
+        SELECT id, email, username FROM user
+    </select>
+    
+    <insert id="insert" parameterType="net.gilangprambudi.spring.boilerplate.common.dal.dataobject.UserDO">
+        INSERT INTO user (id, email, username) VALUES (#{id}, #{email}, #{username})
+    </insert>
+</mapper>
